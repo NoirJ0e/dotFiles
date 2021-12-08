@@ -1,0 +1,16 @@
+{
+    "coc.preferences.extensionUpdateCheck": "daily",
+    "suggest.timeout": "500",
+    "coc.preferences.formatOnSaveFiletypes": [
+        "javascript",
+        "typescript",
+        "html",
+        "css",
+        "json",
+        "java",
+        "python",
+        "c"
+    ],
+    "typescript.suggestionActions.enabled": true,
+    "typescript.format.enabled": true
+}
