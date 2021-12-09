@@ -25,6 +25,7 @@ alias sps="spotify play"
 alias nvui="nvui --ext_cmdline=true --ext_popupmenu=true --detached -- "
 
 
+
 # start zplug (from homebrew)
 eval $(thefuck --alias)
 export ZPLUG_HOME=$(brew --prefix)/opt/zplug
@@ -63,6 +64,9 @@ setopt SHARE_HISTORY
 # fzf
 source /usr/local/opt/fzf/shell/key-bindings.zsh
 source /usr/local/opt/fzf/shell/completion.zsh
+#export FZF_DEFAULT_COMMAND='if [ -f cscope.files ]; then cat cscope.files; else find ./ -type f ; fi'
+export FZF_COMPLETION_TRIGGER='\'
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -88,3 +92,4 @@ autoload -U promptinit; promptinit
 # starup
 #tmux
 #typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+
