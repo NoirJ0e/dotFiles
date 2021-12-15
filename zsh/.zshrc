@@ -1,3 +1,8 @@
+
+#### FIG ENV VARIABLES ####
+# Please make sure this block is at the start of this file.
+[ -s ~/.fig/shell/pre.sh ] && source ~/.fig/shell/pre.sh
+#### END FIG ENV VARIABLES ####
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -22,8 +27,7 @@ alias rm="trash"
 # Spotify
 alias spp="spotify pause"
 alias sps="spotify play"
-alias nvui="nvui --ext_cmdline=true --ext_popupmenu=true --detached -- "
-
+alias zip='zip -r -9'
 
 
 # start zplug (from homebrew)
@@ -35,6 +39,8 @@ zplug "zsh-users/zsh-autosuggestions"
 zplug "zdharma/fast-syntax-highlighting"
 # configuration framework
 zplug "sorin-ionescu/prezto"
+# zsh-vi-mode
+#zplug "jeffreytse/zsh-vi-mode"
 # colorful ls results
 zplug "zpm-zsh/ls"
 # better completion
@@ -70,7 +76,6 @@ export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 # Startup commands
 zplug load
 # exports
@@ -93,3 +98,8 @@ autoload -U promptinit; promptinit
 #tmux
 #typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
+
+#### FIG ENV VARIABLES ####
+# Please make sure this block is at the end of this file.
+[ -s ~/.fig/fig.sh ] && source ~/.fig/fig.sh
+#### END FIG ENV VARIABLES ####
