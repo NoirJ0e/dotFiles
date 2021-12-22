@@ -69,30 +69,10 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
-  LeaderF = {
+  ["barbar.nvim"] = {
     loaded = true,
-    path = "/Users/noirjoe/.local/share/nvim/site/pack/packer/start/LeaderF",
-    url = "https://github.com/Yggdroot/LeaderF"
-  },
-  ["accelerated-jk"] = {
-    loaded = true,
-    path = "/Users/noirjoe/.local/share/nvim/site/pack/packer/start/accelerated-jk",
-    url = "https://github.com/rhysd/accelerated-jk"
-  },
-  ["auto-pairs"] = {
-    loaded = true,
-    path = "/Users/noirjoe/.local/share/nvim/site/pack/packer/start/auto-pairs",
-    url = "https://github.com/jiangmiao/auto-pairs"
-  },
-  ["beacon.nvim"] = {
-    loaded = true,
-    path = "/Users/noirjoe/.local/share/nvim/site/pack/packer/start/beacon.nvim",
-    url = "https://github.com/danilamihailov/beacon.nvim"
-  },
-  ["bufferline.nvim"] = {
-    loaded = true,
-    path = "/Users/noirjoe/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
-    url = "https://github.com/akinsho/bufferline.nvim"
+    path = "/Users/noirjoe/.local/share/nvim/site/pack/packer/start/barbar.nvim",
+    url = "https://github.com/romgrk/barbar.nvim"
   },
   ["cmp-buffer"] = {
     loaded = true,
@@ -129,17 +109,15 @@ _G.packer_plugins = {
     path = "/Users/noirjoe/.local/share/nvim/site/pack/packer/start/lspkind-nvim",
     url = "https://github.com/onsails/lspkind-nvim"
   },
-  ["markdown-preview.nvim"] = {
-    loaded = false,
-    needs_bufread = false,
-    only_cond = false,
-    path = "/Users/noirjoe/.local/share/nvim/site/pack/packer/opt/markdown-preview.nvim",
-    url = "https://github.com/iamcco/markdown-preview.nvim"
-  },
-  nerdcommenter = {
+  ["lualine.nvim"] = {
     loaded = true,
-    path = "/Users/noirjoe/.local/share/nvim/site/pack/packer/start/nerdcommenter",
-    url = "https://github.com/preservim/nerdcommenter"
+    path = "/Users/noirjoe/.local/share/nvim/site/pack/packer/start/lualine.nvim",
+    url = "https://github.com/nvim-lualine/lualine.nvim"
+  },
+  ["nvim-autopairs"] = {
+    loaded = true,
+    path = "/Users/noirjoe/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
+    url = "https://github.com/windwp/nvim-autopairs"
   },
   ["nvim-cmp"] = {
     loaded = true,
@@ -157,7 +135,6 @@ _G.packer_plugins = {
     url = "https://github.com/neovim/nvim-lspconfig"
   },
   ["nvim-tree.lua"] = {
-    config = { "\27LJ\2\n;\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\14nvim-tree\frequire\0" },
     loaded = true,
     path = "/Users/noirjoe/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
     url = "https://github.com/kyazdani42/nvim-tree.lua"
@@ -172,55 +149,29 @@ _G.packer_plugins = {
     path = "/Users/noirjoe/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
-  ["onedark.vim"] = {
+  ["onedarker.nvim"] = {
     loaded = true,
-    path = "/Users/noirjoe/.local/share/nvim/site/pack/packer/start/onedark.vim",
-    url = "https://github.com/joshdick/onedark.vim"
+    path = "/Users/noirjoe/.local/share/nvim/site/pack/packer/start/onedarker.nvim",
+    url = "https://github.com/LunarVim/onedarker.nvim"
   },
   ["packer.nvim"] = {
     loaded = true,
     path = "/Users/noirjoe/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
   },
-  ["vim-airline"] = {
-    loaded = true,
-    path = "/Users/noirjoe/.local/share/nvim/site/pack/packer/start/vim-airline",
-    url = "https://github.com/vim-airline/vim-airline"
-  },
-  ["vim-airline-themes"] = {
-    loaded = true,
-    path = "/Users/noirjoe/.local/share/nvim/site/pack/packer/start/vim-airline-themes",
-    url = "https://github.com/vim-airline/vim-airline-themes"
-  },
-  ["vim-coloresque"] = {
-    loaded = true,
-    path = "/Users/noirjoe/.local/share/nvim/site/pack/packer/start/vim-coloresque",
-    url = "https://github.com/gko/vim-coloresque"
-  },
-  ["vim-lastplace"] = {
-    loaded = true,
-    path = "/Users/noirjoe/.local/share/nvim/site/pack/packer/start/vim-lastplace",
-    url = "https://github.com/farmergreg/vim-lastplace"
-  },
   ["vim-vsnip"] = {
     loaded = true,
     path = "/Users/noirjoe/.local/share/nvim/site/pack/packer/start/vim-vsnip",
     url = "https://github.com/hrsh7th/vim-vsnip"
+  },
+  ["zephyr-nvim"] = {
+    loaded = true,
+    path = "/Users/noirjoe/.local/share/nvim/site/pack/packer/start/zephyr-nvim",
+    url = "https://github.com/glepnir/zephyr-nvim"
   }
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: nvim-tree.lua
-time([[Config for nvim-tree.lua]], true)
-try_loadstring("\27LJ\2\n;\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\14nvim-tree\frequire\0", "config", "nvim-tree.lua")
-time([[Config for nvim-tree.lua]], false)
-vim.cmd [[augroup packer_load_aucmds]]
-vim.cmd [[au!]]
-  -- Filetype lazy-loads
-time([[Defining lazy-load filetype autocommands]], true)
-vim.cmd [[au FileType markdown ++once lua require("packer.load")({'markdown-preview.nvim'}, { ft = "markdown" }, _G.packer_plugins)]]
-time([[Defining lazy-load filetype autocommands]], false)
-vim.cmd("augroup END")
 if should_profile then save_profiles() end
 
 end)
