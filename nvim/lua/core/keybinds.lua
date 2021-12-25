@@ -11,8 +11,15 @@ map('n', '<leader>e', ':NvimTreeToggle<CR>', opt)
 -- move between tabs
 map('n', '<S-h>', ':BufferPrevious<CR>', opt)
 map('n', '<S-l>', ':BufferNext<CR>', opt)
+map('n', '<leader>x', ':BufferClose<CR>', opt)
 -- format codes
 map('n', '<leader>i', 'gg=G', opt)
+-- open file searcher
+map('n', '<leader>f', ':Telescope find_files<CR>', opt)
+-- open terminal
+map('n', '<C-t>', ':FloatermToggle<CR>', opt)
+-- which-key
+-- map('n', '<leader>', ':WhichKey <leader><CR>', opt)
 
 local pluginKeys = {}
 

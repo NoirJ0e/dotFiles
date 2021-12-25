@@ -34,7 +34,7 @@ cmp.setup {
     }),
 
   -- 快捷键
-  mapping = require'keybinds'.cmp(cmp),
+  mapping = require'core.keybinds'.cmp(cmp),
   -- 使用 lspkind-nvim 显示类型图标
   formatting = {
     format = lspkind.cmp_format({

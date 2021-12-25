@@ -1,5 +1,5 @@
 vim.g.encoding = "UTF-8"
-vim.o.fileencoding = 'urf-8'
+vim.o.fileencoding = 'utf-8'
 vim.wo.number = true
 vim.wo.relativenumber = true
 -- 高亮指针行
@@ -33,7 +33,7 @@ vim.o.backup = false
 vim.o.writebackup = false
 vim.o.swapfile = false
 vim.o.list = true
-vim.o.listchars = "space:·"
+--vim.o.listchars = "space:·"
 -- 补全增强
 vim.o.wildmenu = true
 -- always show tabline
