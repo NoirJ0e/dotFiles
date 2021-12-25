@@ -1,8 +1,7 @@
 
-#### FIG ENV VARIABLES ####
-# Please make sure this block is at the start of this file.
-[ -s ~/.fig/shell/pre.sh ] && source ~/.fig/shell/pre.sh
-#### END FIG ENV VARIABLES ####
+
+
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -36,7 +35,7 @@ export ZPLUG_HOME=$(brew --prefix)/opt/zplug
 source $ZPLUG_HOME/init.zsh
 # zplug plugs
 zplug "zsh-users/zsh-autosuggestions"
-zplug "zdharma/fast-syntax-highlighting"
+zplug "zdharma-continuum/fast-syntax-highlighting"
 # configuration framework
 zplug "sorin-ionescu/prezto"
 # zsh-vi-mode
@@ -54,7 +53,7 @@ zplug "plugins/extract",   from:oh-my-zsh
 # sudo
 zplug "plugins/sudo",   from:oh-my-zsh
 # osx controls
-zplug "plugins/osx",   from:oh-my-zsh
+# zplug "plugins/macos",   from:oh-my-zsh
 
 # Share history from multiple zsh instances
 
@@ -76,7 +75,7 @@ export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-# Startup commands
+# Startup commands 
 zplug load
 # exports
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
@@ -92,14 +91,18 @@ export LDFLAGS="-L/usr/local/opt/qt@5/lib"
 export CPPFLAGS="-I/usr/local/opt/qt@5/include"
 export PKG_CONFIG_PATH="/usr/local/opt/qt@5/lib/pkgconfig"
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
+export CXX=/usr/local/bin/clang++
 # prompt
 autoload -U promptinit; promptinit
+# tab completion case-insensitive
+autoload -Uz compinit && compinit
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
 # starup
 #tmux
 #typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
 
-#### FIG ENV VARIABLES ####
-# Please make sure this block is at the end of this file.
-[ -s ~/.fig/fig.sh ] && source ~/.fig/fig.sh
-#### END FIG ENV VARIABLES ####
+
+
+
+
