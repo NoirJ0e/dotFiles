@@ -27,6 +27,7 @@ lua require('neoscroll').setup()
 lua require('nvim_comment').setup({operator_mapping = "<leader>c"})
 lua require('nvim-autopairs').setup{}
 lua require('colorizer').setup()
+lua require('gitsigns').setup()
 
 
 " === LSP

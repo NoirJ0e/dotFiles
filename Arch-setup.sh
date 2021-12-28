@@ -14,4 +14,3 @@ rsync -a nvim/ $HOME/.config/nvim
 rsync -a kitty/ $HOME/.config/kitty
 rsync -a ranger/ $HOME/.config/kitty
 cp zsh/.zshrc-linux $HOME/.zshrc
-
