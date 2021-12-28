@@ -75,7 +75,6 @@ return require('packer').startup(function()
                 config = function()
                         require('gitsigns').setup()
                 end,
-                opt = true
         }
         -- -- which-key
         -- use {
