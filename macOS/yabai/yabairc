@@ -40,7 +40,7 @@ yabai -m config mouse_drop_action            swap
 
 # general space settings
 yabai -m config layout                       bsp
-yabai -m config top_padding                  10
+yabai -m config top_padding                  06
 yabai -m config bottom_padding               12
 yabai -m config left_padding                 06
 yabai -m config right_padding                06
@@ -60,5 +60,9 @@ yabai -m config window_gap                   06
 # apps always in float
 yabai -m rule --add app="System Preferences" manage=off
 yabai -m rule --add app="Movist Pro" manage=off
+yabai -m rule --add app="1Password 7" manage=off
+yabai -m rule --add app="WeChat" manage=off
+yabai -m rule --add app="System Information" manage=off
+yabai -m rule --add app="WPS Office" manage=off
 
 echo "yabai configuration loaded.."
