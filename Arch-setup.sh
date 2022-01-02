@@ -8,9 +8,9 @@ mkdir -p $HOME/.config/bspwm
 mkdir -p $HOME/.config/kitty
 
 # Make sure has rsync
-sudo pacman -S rsync ueberzug
+sudo pacman -S rsync ueberzug bspwm sxhkd
 
 rsync -a nvim/ $HOME/.config/nvim
 rsync -a kitty/ $HOME/.config/kitty
-rsync -a ranger/ $HOME/.config/kitty
+rsync -a ranger/ $HOME/.config/ranger
 cp zsh/.zshrc-linux $HOME/.zshrc
