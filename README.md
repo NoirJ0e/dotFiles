@@ -4,4 +4,4 @@
 
 ## Arch
 
-直接运行 `Arch-setup.sh` 即可，包含了 bspwm 和 sxhkd 的按键配置
+
