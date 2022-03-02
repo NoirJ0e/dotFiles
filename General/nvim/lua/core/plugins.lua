@@ -73,6 +73,12 @@ return require('packer').startup(function()
                         'nvim-lua/plenary.nvim'
                 },
         }
+        -- Markdown
+        use {
+        'iamcco/markdown-preview.nvim',
+        run = function() vim.fn['mkdp#util#install']() end,
+        ft = {'markdown'}
+        }
         -- -- which-key
         -- use {
         --         "folke/which-key.nvim",
