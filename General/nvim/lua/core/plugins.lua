@@ -64,7 +64,10 @@ return require('packer').startup(function()
                 'karb94/neoscroll.nvim',
                 'lukas-reineke/indent-blankline.nvim',
                 'norcalli/nvim-colorizer.lua',
+                'xiyaowong/nvim-transparent',
+                'lewis6991/spellsitter.nvim',
                 -- 'glepnir/dashboard-nvim'
+                'tell-k/vim-autopep8',
         }
         -- git
         use {
@@ -90,5 +93,8 @@ return require('packer').startup(function()
         --         --         }
         --         -- end
         -- }
-
+        -- org-mode
+        use {'nvim-orgmode/orgmode', config = function()
+        require('orgmode').setup{}
+        end} 
 end)

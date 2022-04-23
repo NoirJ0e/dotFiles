@@ -2,6 +2,8 @@ vim.g.encoding = "UTF-8"
 vim.o.fileencoding = 'utf-8'
 vim.wo.number = true
 vim.wo.relativenumber = true
+-- 右侧参考线，超过表示代码太长了，考虑换行
+vim.wo.colorcolumn = "80"
 -- 高亮指针行
 vim.wo.cursorline=true
 -- 缩进 2 个空格等于一个 Tab
@@ -38,3 +40,4 @@ vim.o.list = true
 vim.o.wildmenu = true
 -- always show tabline
 vim.o.showtabline = 2
+vim.opt.clipboard = "unnamedplus"
