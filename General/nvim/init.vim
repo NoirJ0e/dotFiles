@@ -1,17 +1,27 @@
-let g:autopep8_disable_show_diff=1
-let g:autopep8_on_save = 1
+" let g:autopep8_disable_show_diff=1
+" let g:autopep8_on_save = 1
+set clipboard+=unnamedplus
+if has('wsl')
+        let g:clipboard = {
+                                \   'name': 'win32yank-wsl',
+                                \   'copy': {
+                                        \      '+': '/usr/local/bin/win32yank.exe -i --crlf',
+                                        \      '*': '/usr/local/bin/win32yank.exe -i --crlf',
+                                        \    },
+                                        \   'paste': {
+                                                \      '+': '/usr/local/bin/win32yank.exe -o --lf',
+                                                \      '*': '/usr/local/bin/win32yank.exe -o --lf',
+                                                \   },
+                                                \   'cache_enabled': 0,
+                                                \ }
+endif
 "colorscheme
+"set clipboard=
 "
 "colorscheme kanagawa
-filetype on
 colorscheme nord
 set termguicolors
 set guifont=JetBrainsMono\ Nerd\ Font:h16
-" set clipboard+=unnamedplus
-" 支持在 Visual 模式下，通过 C-y 复制到系统剪切板
-" vnoremap <C-y> "+y
-" " 支持在 normal 模式下，通过 C-p 粘贴系统剪切板
-" nnoremap <C-p> "*p
 
 
 
@@ -74,9 +84,3 @@ func! CompileRunGcc()
                 exec "!node %"
         endif
 endfunction
-
-" === format file
-augroup formater
-        au!
-        au FileType python call BlackSync()
-augroup END
