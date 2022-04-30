@@ -67,7 +67,7 @@ return require('packer').startup(function()
                 'xiyaowong/nvim-transparent',
                 'lewis6991/spellsitter.nvim',
                 -- 'glepnir/dashboard-nvim'
-                'tell-k/vim-autopep8',
+                'averms/black-nvim',
         }
         -- git
         use {
@@ -78,9 +78,9 @@ return require('packer').startup(function()
         }
         -- Markdown
         use {
-        'iamcco/markdown-preview.nvim',
-        run = function() vim.fn['mkdp#util#install']() end,
-        ft = {'markdown'}
+                'iamcco/markdown-preview.nvim',
+                run = function() vim.fn['mkdp#util#install']() end,
+                ft = {'markdown'}
         }
         -- -- which-key
         -- use {
@@ -93,8 +93,8 @@ return require('packer').startup(function()
         --         --         }
         --         -- end
         -- }
-        -- org-mode
-        use {'nvim-orgmode/orgmode', config = function()
-        require('orgmode').setup{}
-        end} 
+        -- -- org-mode
+        -- use {'nvim-orgmode/orgmode', config = function()
+        --         require('orgmode').setup{}
+        -- end} 
 end)
