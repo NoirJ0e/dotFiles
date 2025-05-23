@@ -17,9 +17,6 @@ end
 
 require "lazy_setup"
 require "polish"
-vim.cmd [[colorscheme tokyonight-night]]
 
-vim.api.nvim_create_autocmd("TermOpen", {
-  pattern = "*",
-  callback = function() vim.env.NVIM_TERM = "1" end,
-})
+vim.opt.wrap = true
+vim.opt.textwidth = 80
