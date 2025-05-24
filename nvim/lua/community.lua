@@ -18,5 +18,6 @@ return {
   { import = "astrocommunity.media.image-nvim" },
   { import = "astrocommunity.media.vim-wakatime" },
   { import = "astrocommunity.note-taking.obsidian-nvim" },
+  { import = "astrocommunity.recipes.vscode" },
   -- import/override with your plugins folder
 }
