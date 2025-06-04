@@ -12,11 +12,15 @@ return {
   { import = "astrocommunity.pack.java" },
   { import = "astrocommunity.pack.jj" },
   { import = "astrocommunity.pack.json" },
+  { import = "astrocommunity.pack.go" },
   { import = "astrocommunity.pack.typescript-all-in-one" },
   { import = "astrocommunity.pack.tailwindcss" },
   { import = "astrocommunity.recipes.neovide" },
-  { import = "astrocommunity.media.image-nvim" },
+  -- { import = "astrocommunity.media.image-nvim" },
   { import = "astrocommunity.media.vim-wakatime" },
   { import = "astrocommunity.note-taking.obsidian-nvim" },
+  { import = "astrocommunity.editing-support.bigfile-nvim" },
+  { import = "astrocommunity.scrolling.nvim-scrollbar" },
+  { import = "astrocommunity.utility.noice-nvim" },
   -- import/override with your plugins folder
 }
