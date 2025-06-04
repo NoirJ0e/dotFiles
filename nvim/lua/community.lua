@@ -10,7 +10,7 @@ return {
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.pack.markdown" },
   { import = "astrocommunity.pack.java" },
-  { import = "astrocommunity.pack.jj" },
+  -- { import = "astrocommunity.pack.jj" },
   { import = "astrocommunity.pack.json" },
   { import = "astrocommunity.pack.go" },
   { import = "astrocommunity.pack.typescript-all-in-one" },
@@ -22,5 +22,6 @@ return {
   { import = "astrocommunity.editing-support.bigfile-nvim" },
   { import = "astrocommunity.scrolling.nvim-scrollbar" },
   { import = "astrocommunity.utility.noice-nvim" },
+  { import = "astrocommunity.recipes.vscode" },
   -- import/override with your plugins folder
 }
