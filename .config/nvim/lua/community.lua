@@ -47,5 +47,6 @@ return {
   { import = "astrocommunity.scrolling.nvim-scrollbar" },
   { import = "astrocommunity.utility.noice-nvim" },
   { import = "astrocommunity.recipes.vscode" },
+  { import = "astrocommunity.git.diffview-nvim" },
   -- import/override with your plugins folder
 }
