@@ -12,8 +12,7 @@ return {
   -- Avante AI Assistant
   {
     "yetone/avante.nvim",
-    build = vim.fn.has("win32") ~= 0
-        and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
+    build = vim.fn.has "win32" ~= 0 and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
       or "make",
     event = "VeryLazy",
     version = false,
@@ -24,7 +23,7 @@ return {
         args = { "@zed-industries/claude-code-acp" },
         env = {
           NODE_NO_WARNINGS = "1",
-          ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY"),
+          ANTHROPIC_API_KEY = os.getenv "ANTHROPIC_API_KEY",
         },
       },
     },
@@ -95,18 +94,18 @@ return {
     "hrsh7th/nvim-cmp",
     optional = true,
     opts = function(_, opts)
-      local cmp = require("cmp")
+      local cmp = require "cmp"
       if not opts.mapping then opts.mapping = {} end
       opts.mapping["<Tab>"] = cmp.mapping(function(fallback)
         local mini_snippets_avail, mini_snippets = pcall(require, "mini.snippets")
         local luasnip_avail, luasnip = pcall(require, "luasnip")
         if mini_snippets_avail and mini_snippets.session.get(false) then
-          mini_snippets.session.jump("next")
+          mini_snippets.session.jump "next"
           return
         elseif luasnip_avail and luasnip.locally_jumpable(1) then
           luasnip.jump(1)
           return
-        elseif vim.snippet and vim.snippet.active({ direction = 1 }) then
+        elseif vim.snippet and vim.snippet.active { direction = 1 } then
           vim.schedule(function() vim.snippet.jump(1) end)
           return
         end
@@ -117,12 +116,12 @@ return {
         local mini_snippets_avail, mini_snippets = pcall(require, "mini.snippets")
         local luasnip_avail, luasnip = pcall(require, "luasnip")
         if mini_snippets_avail and mini_snippets.session.get(false) then
-          mini_snippets.session.jump("prev")
+          mini_snippets.session.jump "prev"
           return
         elseif luasnip_avail and luasnip.locally_jumpable(-1) then
           luasnip.jump(-1)
           return
-        elseif vim.snippet and vim.snippet.active({ direction = -1 }) then
+        elseif vim.snippet and vim.snippet.active { direction = -1 } then
           vim.schedule(function() vim.snippet.jump(-1) end)
           return
         end
@@ -161,14 +160,14 @@ return {
       },
     },
     opts = function(_, opts)
-      local astrocore = require("astrocore")
+      local astrocore = require "astrocore"
       return astrocore.extend_tbl(opts, {
         dir = "~/LifeOS",
         use_advanced_uri = true,
-        finder = (astrocore.is_available("snacks.pick") and "snacks.pick")
-          or (astrocore.is_available("telescope.nvim") and "telescope.nvim")
-          or (astrocore.is_available("fzf-lua") and "fzf-lua")
-          or (astrocore.is_available("mini.pick") and "mini.pick"),
+        finder = (astrocore.is_available "snacks.pick" and "snacks.pick")
+          or (astrocore.is_available "telescope.nvim" and "telescope.nvim")
+          or (astrocore.is_available "fzf-lua" and "fzf-lua")
+          or (astrocore.is_available "mini.pick" and "mini.pick"),
         templates = {
           subdir = "templates",
           date_format = "%Y-%m-%d-%a",
@@ -176,8 +175,8 @@ return {
         },
         daily_notes = { folder = "daily" },
         completion = {
-          nvim_cmp = astrocore.is_available("nvim-cmp"),
-          blink = astrocore.is_available("blink"),
+          nvim_cmp = astrocore.is_available "nvim-cmp",
+          blink = astrocore.is_available "blink",
         },
         note_frontmatter_func = function(note)
           local out = { id = note.id, aliases = note.aliases, tags = note.tags }
