@@ -41,7 +41,6 @@ return {
   { import = "astrocommunity.pack.tailwindcss" },
   { import = "astrocommunity.recipes.neovide" },
   { import = "astrocommunity.media.vim-wakatime" },
-  { import = "astrocommunity.note-taking.obsidian-nvim" },
   { import = "astrocommunity.editing-support.bigfile-nvim" },
   { import = "astrocommunity.scrolling.nvim-scrollbar" },
   { import = "astrocommunity.utility.noice-nvim" },
