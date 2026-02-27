@@ -1,0 +1,240 @@
+-- Options are automatically loaded before lazy.nvim startup
+-- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
+-- Add any additional options here
+
+-- local M = {}
+--
+-- -- 状态缓存
+-- M._last_detected_mode = nil -- true=dark, false=light
+-- M._timer = nil
+-- M._manual_override = nil -- "dark", "light", or nil (auto)
+--
+-- -- 检测系统深色模式(改进版,tmux 兼容)
+-- function M.is_dark_mode()
+--   -- 如果有手动覆盖,直接返回
+--   if M._manual_override == "dark" then
+--     return true
+--   end
+--   if M._manual_override == "light" then
+--     return false
+--   end
+--
+--   -- macOS 检测 (tmux 兼容改进)
+--   if vim.fn.has("mac") == 1 then
+--     -- 方法1: 使用 osascript (更可靠)
+--     local osascript_cmd =
+--       [[osascript -e 'tell application "System Events" to tell appearance preferences to return dark mode' 2>/dev/null]]
+--     local result1 = vim.fn.system(osascript_cmd):gsub("%s+", "")
+--     if result1 == "true" then
+--       return true
+--     end
+--     if result1 == "false" then
+--       return false
+--     end
+--
+--     -- 方法2: defaults read (fallback)
+--     local defaults_cmd = [[defaults read -g AppleInterfaceStyle 2>/dev/null]]
+--     local result2 = vim.fn.system(defaults_cmd)
+--     if result2:match("Dark") then
+--       return true
+--     end
+--     if result2:match("^%s*$") or result2:match("not exist") then
+--       return false -- 没有 Dark key 说明是浅色
+--     end
+--   end
+--
+--   -- Linux: 按优先级尝试多种方式
+--
+--   -- 1. freedesktop portal (最通用,支持 Flatpak/Snap 等)
+--   local portal_cmd = [[
+--     gdbus call --session \
+--       --dest org.freedesktop.portal.Desktop \
+--       --object-path /org/freedesktop/portal/desktop \
+--       --method org.freedesktop.portal.Settings.Read \
+--       org.freedesktop.appearance color-scheme 2>/dev/null
+--   ]]
+--   local portal = vim.fn.system(portal_cmd)
+--   if portal:match("1") then
+--     return true
+--   end -- 1 = prefer-dark
+--   if portal:match("2") then
+--     return false
+--   end -- 2 = prefer-light
+--
+--   -- 2. GNOME / GTK
+--   local gnome_cmd = [[gsettings get org.gnome.desktop.interface color-scheme 2>/dev/null]]
+--   local gnome = vim.fn.system(gnome_cmd)
+--   if gnome:match("dark") then
+--     return true
+--   end
+--   if gnome:match("light") then
+--     return false
+--   end
+--
+--   -- 3. KDE Plasma
+--   local kde_cmd = [[kreadconfig5 --group General --key ColorScheme 2>/dev/null]]
+--   local kde = vim.fn.system(kde_cmd)
+--   if kde:lower():match("dark") then
+--     return true
+--   end
+--   if kde:lower():match("light") then
+--     return false
+--   end
+--
+--   -- 4. darkman (如果你用这个工具管理)
+--   local darkman_cmd = [[darkman get 2>/dev/null]]
+--   local darkman = vim.fn.system(darkman_cmd):gsub("%s+", "")
+--   if darkman == "dark" then
+--     return true
+--   end
+--   if darkman == "light" then
+--     return false
+--   end
+--
+--   -- 5. 环境变量 fallback
+--   local gtk_theme = os.getenv("GTK_THEME") or ""
+--   if gtk_theme:lower():match("dark") then
+--     return true
+--   end
+--
+--   -- 默认深色
+--   return true
+-- end
+--
+-- -- 你指定的主题
+-- M.dark_theme = "tokyonight-night"
+-- M.light_theme = "NeoSolarized"
+--
+-- -- 应用主题(带缓存优化)
+-- function M.apply()
+--   local is_dark = M.is_dark_mode()
+--
+--   -- 如果主题没有变化,跳过应用(避免闪烁)
+--   if M._last_detected_mode == is_dark then
+--     return
+--   end
+--
+--   M._last_detected_mode = is_dark
+--   vim.o.background = is_dark and "dark" or "light"
+--
+--   local theme = is_dark and M.dark_theme or M.light_theme
+--   local ok, _ = pcall(vim.cmd.colorscheme, theme)
+--   if not ok then
+--     vim.notify("Theme not found: " .. theme, vim.log.levels.WARN)
+--   else
+--     -- 仅在成功切换时通知(可选,取消注释以启用)
+--     -- local mode_name = is_dark and "Dark" or "Light"
+--     -- vim.notify("Theme switched to " .. mode_name .. " mode", vim.log.levels.INFO)
+--   end
+-- end
+--
+-- -- 强制切换到深色模式
+-- function M.force_dark()
+--   M._manual_override = "dark"
+--   M._last_detected_mode = nil -- 强制刷新
+--   M.apply()
+--   vim.notify("Forced Dark Mode", vim.log.levels.INFO)
+-- end
+--
+-- -- 强制切换到浅色模式
+-- function M.force_light()
+--   M._manual_override = "light"
+--   M._last_detected_mode = nil -- 强制刷新
+--   M.apply()
+--   vim.notify("Forced Light Mode", vim.log.levels.INFO)
+-- end
+--
+-- -- 恢复自动模式
+-- function M.auto_mode()
+--   M._manual_override = nil
+--   M._last_detected_mode = nil -- 强制刷新
+--   M.apply()
+--   vim.notify("Auto Theme Mode (following system)", vim.log.levels.INFO)
+-- end
+--
+-- -- 切换深色/浅色模式
+-- function M.toggle()
+--   local current_bg = vim.o.background
+--   if current_bg == "dark" then
+--     M.force_light()
+--   else
+--     M.force_dark()
+--   end
+-- end
+--
+-- -- 停止定时器
+-- function M.stop_timer()
+--   if M._timer then
+--     M._timer:stop()
+--     M._timer:close()
+--     M._timer = nil
+--   end
+-- end
+--
+-- -- 启动定时器轮询(实现实时监听)
+-- function M.start_timer(interval_ms)
+--   M.stop_timer() -- 确保没有重复的定时器
+--
+--   interval_ms = interval_ms or 5000 -- 默认 5 秒
+--
+--   M._timer = vim.loop.new_timer()
+--   M._timer:start(
+--     0, -- 立即开始
+--     interval_ms, -- 间隔
+--     vim.schedule_wrap(function()
+--       M.apply()
+--     end)
+--   )
+-- end
+--
+-- -- 设置函数
+-- function M.setup(opts)
+--   opts = opts or {}
+--   M.dark_theme = opts.dark or M.dark_theme
+--   M.light_theme = opts.light or M.light_theme
+--
+--   local enable_timer = opts.enable_timer ~= false -- 默认启用
+--   local enable_events = opts.enable_events ~= false -- 默认启用
+--   local timer_interval = opts.timer_interval or 5000 -- 默认 5 秒
+--
+--   -- 启动时应用
+--   M.apply()
+--
+--   -- 启动定时器(实时监听)
+--   if enable_timer then
+--     M.start_timer(timer_interval)
+--   end
+--
+--   -- 事件触发的自动同步(多事件覆盖)
+--   if enable_events then
+--     local events = { "FocusGained", "VimResume", "BufEnter" }
+--     vim.api.nvim_create_autocmd(events, {
+--       callback = M.apply,
+--       desc = "Auto sync theme with system",
+--     })
+--   end
+--
+--   -- 退出时清理定时器
+--   vim.api.nvim_create_autocmd("VimLeavePre", {
+--     callback = M.stop_timer,
+--     desc = "Stop theme sync timer",
+--   })
+--
+--   -- 用户命令
+--   vim.api.nvim_create_user_command("ThemeSync", M.apply, { desc = "Sync theme with system" })
+--   vim.api.nvim_create_user_command("ThemeDark", M.force_dark, { desc = "Force dark theme" })
+--   vim.api.nvim_create_user_command("ThemeLight", M.force_light, { desc = "Force light theme" })
+--   vim.api.nvim_create_user_command("ThemeAuto", M.auto_mode, { desc = "Auto theme mode (follow system)" })
+--   vim.api.nvim_create_user_command("ThemeToggle", M.toggle, { desc = "Toggle dark/light theme" })
+-- end
+--
+-- -- 自动启动(在 LazyVim 加载后)
+-- vim.api.nvim_create_autocmd("User", {
+--   pattern = "VeryLazy",
+--   callback = function()
+--     M.setup()
+--   end,
+--   once = true,
+-- })
+--
+-- return M
