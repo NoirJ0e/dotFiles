@@ -226,16 +226,16 @@ fi
 # JJ completion (lazy-load for performance)
 if command -v jj &>/dev/null; then
     _jj_lazy_complete() {
-        eval "$(jj util completion zsh)"
-        unset -f _jj_lazy_complete jj
+        eval "$(command jj util completion zsh)"           # ← 加 command
+        unset -f _jj_lazy_complete
         compinit
     }
     jj() {
         _jj_lazy_complete
+        unfunction jj
         command jj "$@"
     }
 fi
-
 # GitHub CLI completions (lazy-load)
 if (( $+commands[gh] )); then
     _gh_lazy_complete() {
@@ -254,15 +254,14 @@ fi
 # SDKMAN (Java version manager - heavy, lazy-load)
 if [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]]; then
     _sdkman_lazy_init() {
-        source "$SDKMAN_DIR/bin/sdkman-init.sh"
         unset -f sdk java gradle maven _sdkman_lazy_init
+        source "$SDKMAN_DIR/bin/sdkman-init.sh"
     }
-    sdk() { _sdkman_lazy_init; sdk "$@"; }
-    java() { _sdkman_lazy_init; java "$@"; }
-    gradle() { _sdkman_lazy_init; gradle "$@"; }
-    maven() { _sdkman_lazy_init; maven "$@"; }
+    sdk()    { _sdkman_lazy_init; sdk "$@"; }
+    java()   { _sdkman_lazy_init; command java "$@"; }
+    gradle() { _sdkman_lazy_init; command gradle "$@"; }
+    maven()  { _sdkman_lazy_init; command maven "$@"; }
 fi
-
 # Conda (lazy-load only when needed)
 _conda_lazy_init() {
     local CONDA_BASE="/opt/homebrew/Caskroom/miniconda/base"
@@ -527,12 +526,16 @@ export PATH="$HOME/.local/bin:$PATH"
 # OpenClaw Completion (lazy-load for performance - saves ~2.6 seconds!)
 if command -v openclaw &>/dev/null; then
     _openclaw_lazy_complete() {
-        eval "$(openclaw completion --shell zsh)"
-        unset -f _openclaw_lazy_complete openclaw
+        eval "$(command openclaw completion --shell zsh)"  # ← 加 command
+        unset -f _openclaw_lazy_complete
         compinit
     }
     openclaw() {
         _openclaw_lazy_complete
-        command openclaw "$@"
+        unfunction openclaw                                # ← 先删自己
+        command openclaw "$@"                              # ← 再调真实命令
     }
 fi
+. "$HOME/.local/share/../bin/env"
+
+# eval $(op signin)
